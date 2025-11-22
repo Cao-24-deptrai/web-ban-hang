@@ -1,0 +1,27 @@
+﻿@model ecoom.Models.Product
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h2>ds sp</h2>
+@Html.ActionLink("them moi", "Create", null, new { @class = "btn btn-success" })
+@using (Html.BeginForm("Index", "Product"))
+{
+    <input type="number" name="_min" value="1" />
+    <input type="number" name="_max" value="1" />
+    <input type="submit" value="Filter" />
+}
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(m => m.ProductID)</th>
+        <th>@Html.DisplayNameFor(m => m.NamePro)</th>
+        <th>@Html.DisplayNameFor(m => m.DecriptionPro)</th>
+        <th>@Html.DisplayNameFor(m => m.Price)</th>
+        <th>@Html.DisplayNameFor(m => m.IDCate)</th>
+        <th>@Html.DisplayNameFor(m => m.ImagePro)</th>
+    </tr>
+   
+</table>
