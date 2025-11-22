@@ -23,9 +23,10 @@
       <PropertyRef Name="IDCus" />
     </Key>
     <Property Name="IDCus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NameCus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="PhoneCus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-    <Property Name="EmailCus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="OrderProes" Relationship="Self.FK__OrderPro__IDCus__2A4B4B5E" FromRole="Customer" ToRole="OrderPro" />
   </EntityType>
   <EntityType Name="OrderDetail">
@@ -112,7 +113,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="qlbhEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="qlbhEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
     <EntitySet Name="Categories" EntityType="Self.Category" />
     <EntitySet Name="Customers" EntityType="Self.Customer" />

@@ -20,9 +20,10 @@ namespace ecoom.Models
         }
     
         public int IDCus { get; set; }
-        public string NameCus { get; set; }
-        public string PhoneCus { get; set; }
-        public string EmailCus { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     
         public virtual ICollection<OrderPro> OrderProes { get; set; }
     }

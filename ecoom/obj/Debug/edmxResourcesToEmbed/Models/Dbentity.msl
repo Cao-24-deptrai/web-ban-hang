@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="qlbhModelStoreContainer" CdmEntityContainer="qlbhEntities">
+  <EntityContainerMapping StorageEntityContainer="qlbhModelStoreContainer" CdmEntityContainer="qlbhEntities1">
     <EntitySetMapping Name="AdminUsers">
       <EntityTypeMapping TypeName="qlbhModel.AdminUser">
         <MappingFragment StoreEntitySet="AdminUser">
@@ -24,9 +24,10 @@
       <EntityTypeMapping TypeName="qlbhModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="IDCus" ColumnName="IDCus" />
-          <ScalarProperty Name="NameCus" ColumnName="NameCus" />
-          <ScalarProperty Name="PhoneCus" ColumnName="PhoneCus" />
-          <ScalarProperty Name="EmailCus" ColumnName="EmailCus" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

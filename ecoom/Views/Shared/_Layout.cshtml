@@ -3,66 +3,177 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - ShoeStore</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand fw-bold" href="@Url.Action("Index", "Home")">
+                <i class="fas fa-shoe-prints text-danger"></i> ShoeStore
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li style="color:red">
-                        @if (Session["ID"] == null)
-                        {
-                            <span>Ban chua dang nhap</span>
-                        }
-                        else
-                        {
-                            <span>Xin chao @Session["ID"]</span>
-                        }
-
+            <div class="collapse navbar-collapse" id="#navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Home")">Trang Chủ</a>
                     </li>
-                    <li>
-                        @Html.ActionLink("Logout", "Logout", "LoginRegister", null, new { @class = "btn btn-primary" })
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("IndexCustomer", "Product")">Sản Phẩm</a>
                     </li>
-
-                    <li>
-                        <span style="width:50px; height:50px; position:absolute; text-align:center">
-                            <span style="color:white; position:relative">
-                                @ViewBag.Count
-                            </span>
-                        </span>
-                        <span style="color:white; position:absolute">
-                            <a href="@Url.Action("Index", "Cart")">
-                                <i class="fa-solid fa-cart-shopping" style="width:50px; height:50px;"></i>
-                            </a>
-                        </span>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Giới Thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Liên Hệ</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+
+    <!-- User Info & Cart Bar -->
+    <div class="bg-light border-bottom py-2">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div>
+                @if (Session["ID"] == null)
+                {
+                    <span class="me-2">Bạn chưa đăng nhập</span>
+                    <button id="btnLogin" class="btn btn-sm btn-primary me-2">Đăng Nhập</button>
+                    <button id="btnRegister" class="btn btn-sm btn-outline-primary">Đăng Ký</button>
+                }
+                else
+                {
+                    <span class="me-2">Xin chào, <strong>@Session["ID"]</strong></span>
+                    <a href="@Url.Action("Logout", "Customer")" class="btn btn-sm btn-outline-danger">Đăng Xuất</a>
+                }
+            </div>
+            <div>
+                <a href="@Url.Action("Index", "Cart")" class="btn btn-outline-dark position-relative">
+                    <i class="fas fa-shopping-cart"></i> Giỏ Hàng
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        @ViewBag.Count
+                        <span class="visually-hidden">items in cart</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="py-4">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-shoe-prints"></i> ShoeStore</h5>
+                    <p>Chuyên cung cấp giầy chất lượng cao với giá cạnh tranh.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Liên Kết</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50">Về Chúng Tôi</a></li>
+                        <li><a href="#" class="text-white-50">Chính Sách</a></li>
+                        <li><a href="#" class="text-white-50">Hỗ Trợ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Liên Hệ</h5>
+                    <p class="text-white-50">
+                        <i class="fas fa-phone"></i> 0123 456 789<br>
+                        <i class="fas fa-envelope"></i> support@shoestore.com
+                    </p>
+                </div>
+            </div>
+            <hr class="bg-white-50">
+            <div class="text-center text-white-50">
+                <p>&copy; @DateTime.Now.Year ShoeStore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Login/Register -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="authModalTitle">Đăng nhập</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="authModalBody">
+                    <!-- content loaded by AJAX -->
+                </div>
+            </div>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        $(function () {
+            $('#btnLogin').on('click', function () {
+                $('#authModalTitle').text('Đăng nhập');
+                $('#authModalBody').load('@Url.Action("Login", "Customer")', function () {
+                    $('#authModal').modal('show');
+                    bindAuthForm();
+                });
+            });
+
+            $('#btnRegister').on('click', function () {
+                $('#authModalTitle').text('Đăng ký');
+                $('#authModalBody').load('@Url.Action("Register", "Customer")', function () {
+                    $('#authModal').modal('show');
+                    bindAuthForm();
+                });
+            });
+
+            function bindAuthForm() {
+                var form = $('#authModalBody').find('form');
+                form.on('submit', function (e) {
+                    e.preventDefault();
+                    var url = form.attr('action') || window.location.href;
+                    $.ajax({
+                        url: url,
+                        method: form.attr('method') || 'POST',
+                        data: form.serialize(),
+                        success: function (res) {
+                            if (res && res.success) {
+                                // login/register successful
+                                location.reload();
+                            } else if (res && res.errors) {
+                                // display errors
+                                var html = '<div class="alert alert-danger"><ul>';
+                                res.errors.forEach(function (e) {
+                                    e.errors.forEach(function (m) { html += '<li>' + m + '</li>'; });
+                                });
+                                html += '</ul></div>';
+                                $('#authModalBody').prepend(html);
+                            } else {
+                                // fallback: replace body with returned HTML
+                                $('#authModalBody').html(res);
+                                bindAuthForm();
+                            }
+                        },
+                        error: function () {
+                            alert('Lỗi mạng, vui lòng thử lại');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>

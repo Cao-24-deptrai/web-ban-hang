@@ -1,0 +1,40 @@
+@model ecoom.Models.OrderPro
+
+@{
+    ViewBag.Title = "Chi ti?t ??n hàng";
+}
+
+<h2>Chi ti?t ??n hàng</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h5>Mã ??n: @Model.ID</h5>
+        <p>Ngày: @(Model.DateOrder.HasValue ? Model.DateOrder.Value.ToString("g") : "")</p>
+        <p>Khách hàng: @(Model.Customer != null ? Model.Customer.NameCus : "-")</p>
+        <p>??a ch? giao: @Model.AddressDeliverry</p>
+
+        <h5>Chi ti?t s?n ph?m</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>S?n ph?m</th>
+                    <th>S? l??ng</th>
+                    <th>??n giá</th>
+                    <th>Thành ti?n</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var d in Model.OrderDetails)
+                {
+                    <tr>
+                        <td>@(d.Product != null ? d.Product.NamePro : "-")</td>
+                        <td>@d.Quantity</td>
+                        <td>@(d.UnitPrice.HasValue ? d.UnitPrice.Value.ToString("N0") + " ?" : "")</td>
+                        <td>@(d.Quantity.HasValue && d.UnitPrice.HasValue ? (d.Quantity.Value * d.UnitPrice.Value).ToString("N0") + " ?" : "")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

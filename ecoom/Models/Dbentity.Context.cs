@@ -13,10 +13,10 @@ namespace ecoom.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class qlbhEntities : DbContext
+    public partial class qlbhEntities1 : DbContext
     {
-        public qlbhEntities()
-            : base("name=qlbhEntities")
+        public qlbhEntities1()
+            : base("name=qlbhEntities1")
         {
         }
     

@@ -22,9 +22,10 @@
       <PropertyRef Name="IDCus" />
     </Key>
     <Property Name="IDCus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NameCus" Type="nvarchar(max)" />
-    <Property Name="PhoneCus" Type="nvarchar" MaxLength="15" />
-    <Property Name="EmailCus" Type="nvarchar(max)" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Password" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="OrderDetail">
     <Key>

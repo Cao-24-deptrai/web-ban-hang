@@ -126,7 +126,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,8 +190,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\Dbentity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Dbentity.Context.cs</LastGenOutput>
       <DependentUpon>Dbentity.edmx</DependentUpon>
+      <LastGenOutput>Dbentity.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Dbentity.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -202,6 +204,10 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Customer\Register.cshtml" />
+    <Content Include="Views\Customer\Login.cshtml" />
     <EntityDeploy Include="Models\Dbentity.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Dbentity.Designer.cs</LastGenOutput>
